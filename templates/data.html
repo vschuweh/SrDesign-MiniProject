@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+        var data1 = google.visualization.arrayToDataTable({{labels1| safe}});
+        console.log("asdfasfasfasfas\n\n")
+
+        var options1 = {
+          title: 'Room 1 Sensor Data',
+          hAxis: {title: 'Time'},
+          vAxis: {title: 'Humidity (%), Temperature (Fahrenheit)'},
+          legend: 'right',
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart1'));
+
+        chart.draw(data1, options1);
+
+        var data2 = google.visualization.arrayToDataTable({{labels2| safe}});
+
+        var options2 = {
+          title: 'Room 2 Sensor Data',
+          hAxis: {title: 'Time'},
+          vAxis: {title: 'Humidity (%), Temperature (Fahrenheit)'},
+          legend: 'right',
+        };
+
+        var chart = new google.visualization.LineChart(document.getElementById('curve_chart2'));
+
+        chart.draw(data2, options2);
+
+      }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mini_s24_proj</title>
+
+</head>
+<body style="background:url('/static/cloud2.jpg') no-repeat center center fixed;
+    -webkit - background-size:cover;
+    -moz - background-size: cover;
+    -o - background-size:cover;
+    background-size: cover;
+  color: white;
+  font-family: Helvetica,Arial,sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;">
+
+    <div class="content" >
+    <h1 style="text-align: center; color:white">Weather App 2.0</h1>
+        <input type="button" onclick="location.href='/app_logout';" style="display: block; margin-left: auto; margin-right: auto;" value="Logout" /><br>
+        <!--<br><img src="/static/weather.png"  alt="Your local Weather" style="width:275px;height:183px;display: block; margin-left: auto; margin-right: auto;">-->
+        <br>{{info.userInfo}}
+        <br>Your current location is {{info.city}} {{info.region}}, {{info.country}}
+        <br>Your current Temperature is {{info.temp}}
+
+
+    </div>
+    <div id="curve_chart1" style="width: 900px; height: 500px;display: block; margin-left: auto; margin-right: auto; padding: 30px;"></div>
+    <div id="curve_chart2" style="width: 900px; height: 500px;display: block; margin-left: auto; margin-right: auto; padding: 30px;"></div>
+</body>
+</html>
